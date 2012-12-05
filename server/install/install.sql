@@ -57,3 +57,16 @@ CREATE TABLE IF NOT EXISTS `shop` (
   `phone` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `shop_image`
+--
+
+CREATE TABLE IF NOT EXISTS `shop_image` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `shop` int(10) unsigned NOT NULL,
+  `src` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

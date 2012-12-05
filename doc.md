@@ -18,8 +18,13 @@ data structure
 - average 人均消费
 - phone 电话
 
+**shop image**
+- shop
+- src
+
 **relationship**
-- city 1-m distruct *in conf*
+- city 1-m district *in conf*
+- shop 1-m image
 
 json standard
 -------------
