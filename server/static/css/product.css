@@ -1,0 +1,115 @@
+.left {
+  float: left;
+  width: 45%;
+}
+.right {
+  float: right;
+  width: 45%;
+}
+
+.left .upload {
+  border: 1px dotted;
+}
+
+.search {
+  padding-top: 10px;
+}
+.search .e {
+  display: inline !important;
+  float: none !important;
+  height: 34px;
+  line-height: 34px;
+  padding-left: 15px;
+}
+.search .e .ti {
+  width: 110px;
+}
+.search .mbtn {
+  width: 64px;
+  height: 26px;
+  margin-left: 20px;
+}
+
+/*商品表格*/
+.product {
+  color: #6f6f6f;
+  clear: both;
+}
+.product table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+.product table th, .product table td {
+  border: 0 none;
+  empty-cells: show;
+  text-align: center;
+}
+.product td.col {
+  color: #6f6f6f;
+}
+.product .col {
+  display: table-cell;
+  float: none;
+}
+.product table .col.ckb {
+  width: 30px;
+}
+.product table .col.ckb {
+  height: 27px;
+}
+.product table .col.ckb input {
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.product table tr {
+  height: 27px;
+  line-height: 27px;
+}
+.product table tr:first-child {
+  background-color: #89b8e4;
+  color: #3e3e3e;
+}
+.product table tr:nth-of-type(2n) {
+  background-color: #E6F5FF;
+}
+.product .col.name {
+  width: 290px;
+}
+.product td.col.name {
+  text-align: left;
+}
+.product .name img {
+  display: block;
+  border: 1px solid #cccccc;
+  margin: 12px;
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+.product .name .text-wrap {
+  float: left;
+  margin: 12px 0;
+}
+.product .name .text-wrap .text {
+  font-weight: bold;
+  font-size: 14px;
+}
+.product td.price-estimate {
+  width: 80px;
+  font-weight: bold;
+}
+.paging {
+  float: right;
+}
+.page-info {
+  height: 40px;
+}
+.page-info .total {
+  color: #838484;
+  float: left;
+  line-height: 38px;
+  padding-left: 20px;
+}

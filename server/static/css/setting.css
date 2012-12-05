@@ -1,0 +1,49 @@
+h2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px;
+    margin-left: 133px;
+}
+
+ul li {
+    padding: 10px 0;
+    line-height: 22px;
+    clear: both;
+}
+ul li label {
+    display: inline-block;
+    width: 130px;
+    text-align: right;
+    color: #6B6B6B;
+}
+.mbtn {
+    display: block;
+    width: 60px;
+    height: 30px;
+    clear: both;
+    margin: 30px 133px;
+}
+
+/*修改密码*/
+label {
+    display: inline-block;
+    width: 70px;
+    text-align: right;
+    color: #6B6B6B;
+}
+.board-wrap .password div {
+    padding: 10px 0;
+    line-height: 22px;
+    clear: both;
+}
+.board-wrap .password .info {
+    margin: 20px;
+    padding: 5px;
+    border: 1px solid #5F592B;
+    background-color: #FFF39B;
+    color: #AA2E2E;
+}
+.entry-info {
+    padding-left: 10px;
+    color: #7C7979;
+}

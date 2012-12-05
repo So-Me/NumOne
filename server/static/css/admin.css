@@ -1,0 +1,47 @@
+.small-wrap {
+    width: 1500px;
+}
+.header-wrap h1 a {
+    width: 1500px;
+}
+.content-wrap {
+    width: 1500px;
+}
+.right-frame {
+    width: 1342px;
+}
+
+.tbtn {
+    cursor: pointer;
+    color: #1b8ace;
+}
+.tbtn:hover {
+    background-color: #daf1ff;
+    border: 1px dotted #3f9dd6;
+    padding: 2px;
+}
+
+/*order*/
+.order .name {
+    width: 290px;
+}
+.order .stone {
+    width: 70px;
+    text-align: center;
+}
+.order .factory-name {
+    width: 90px;
+    text-align: center;
+}
+.order .price-factory {
+    width: 90px;
+    text-align: center;
+}
+.order .paid {
+    width: 95px;
+    text-align: center;
+}
+.order .control {
+    width: 80px;
+    text-align: center;
+}

@@ -1,0 +1,8 @@
+.content-wrap {
+    background-image: url('../img/log.jpg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.ok-btn {
+    margin-bottom: 290px !important;
+}

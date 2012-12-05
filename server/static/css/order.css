@@ -1,0 +1,350 @@
+.content-wrap {
+    width: 1000px;
+    margin: auto;
+}
+
+.right-frame {
+    width: 842px;
+}
+
+.search {
+    padding-top: 10px;
+}
+.search .e {
+    display: inline !important;
+    float: none !important;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 15px;
+}
+.search .e .ti {
+    width: 110px;
+}
+.search .mbtn {
+    width: 64px;
+    height: 26px;
+    margin-left: 20px;
+    /*margin-top: 34px;*/
+}
+
+/*订单表格*/
+.order {
+    color: #6f6f6f;
+    clear: both;
+}
+.order .title {
+    background-color: #89b8e4;
+    height: 27px;
+    line-height: 27px;
+    color: #3e3e3e;
+}
+
+.entry {
+    clear: both;
+}
+
+/*订单号*/
+.order .empty-holder {
+    text-decoration: underline;
+}
+.order .brief-info {
+    background-color: #e6f5ff;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 15px;
+}
+.order .brief-info .e {
+    padding-right: 30px;
+}
+
+.order .name {
+    width: 230px;
+}
+.order .name img {
+    display: block;
+    border: 1px solid #cccccc;
+    margin: 17px 12px;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.order .name .text-wrap {
+    float: left;
+    padding-top: 15px;
+}
+.order .name .text-wrap span {
+    display: block;
+}
+.order .name .text-wrap .text {
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.order .info {
+    width: 370px;
+}
+.order div.info {
+    padding-top: 10px;
+}
+.order .info span {
+    line-height: 27px;
+    padding-right: 14px;
+    display: block;
+    float: left;
+    height: 27px;
+}
+
+.order .realname {
+    width: 10%;
+}
+
+.order .price-estimate {
+    width: 80px;
+    text-align: center;
+}
+.order .entry .price-estimate {
+    font-weight: bold;
+    padding-top: 27px;
+}
+
+.order .factory-name {
+    width: 8%;
+}
+.order .entry .factory-name {
+    padding-top: 27px;
+}
+
+.order .price-factory {
+    width: 10%;
+}
+.order .entry .price-factory {
+    padding-top: 27px;
+}
+
+.order .price-real {
+    width: 90px;
+    text-align: center;
+}
+.order .entry .price-real {
+    color: #f2541d;
+    font-weight: bold;
+    padding-top: 27px;
+}
+.price-real .price-detail-btn {
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.order .entry .stone {
+    padding-top: 27px;
+    position: relative;
+}
+.order .stone .stone-detail-btn {
+    color: #1B8ACE;
+    cursor: pointer;
+}
+.order .stone .stone-detail {
+    position: absolute;
+    display: none;
+    width: 254px;
+    border: 1px solid #333;
+    padding: 10px;
+}
+.order .stone-detail div {
+    text-align: left;
+}
+.order .stone-detail span {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+}
+
+
+.order .paid {
+    width: 10%;
+}
+.order .entry .paid {
+    padding-top: 27px;
+}
+
+.order .state {
+    width: 70px;
+    text-align: center;
+}
+.order .entry .state {
+    font-weight: bold;
+    padding-top: 27px;
+}
+.order .state .detail-btn {
+    font-weight: normal;
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+.order .control {
+    width: 8%;
+}
+.order .entry .control {
+    padding-top: 27px;
+}
+.order .control .mbtn {
+    width: 49px;
+    line-height: 21px;
+}
+
+
+
+/*详细信息（不知还有用吗？）*/
+.detail-info {
+    background-color: #ccc;
+}
+.detail-info .address {
+    float: left;
+    width: 300px;
+}
+.detail-info .log {
+    float: right;
+    width: 300px;
+}
+
+.choose-factory-btn {
+    cursor: pointer;
+}
+
+.pay-btn {
+    cursor: pointer;
+}
+
+.edit-info-btn {
+    cursor: pointer;
+}
+
+.remark {
+    clear: both;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+.append-div {
+    padding: 18px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.43);
+}
+
+.order-change.append-div {
+    width: 700px;
+}
+.order-change.append-div .box-wrap {
+    float: left;
+    width: 160px;
+}
+.append-div .title {
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #828282;
+}
+
+.order-change.append-div .more-info {
+    clear: both;
+}
+.order-change.append-div input[type=text] {
+    width: 50px;
+}
+
+.order-pay.append-div {
+    width: 500px;
+}
+
+
+.order-edit.append-div {
+    width: 600px;
+}
+
+.order-factory-append-div {
+    width: 500px;
+}
+
+.order-control.append-div {
+    width: 500px;
+}
+
+.order-stone.append-div {
+    width: 600px;
+}
+
+.order-price.append-div {
+    width: 700px;
+}
+.order-price .box-wrap {
+    float: left;
+    width: 160px;
+    margin-right: 8px;
+    color: #2d2d2d;
+    margin-bottom: 10px;
+}
+
+.append-div .gold .b {
+    background-color: #ffe4e4;
+}
+.append-div .labor .b {
+    background-color: #fff1e3;
+}
+.append-div .small-stone .b {
+    background-color: #ffffe3;
+}
+.append-div .others .b {
+    background-color: #f1ffe3;
+}
+
+.append-div .box-wrap .total {
+    height: 43px;
+    line-height: 43px;
+    font-size: 20px;
+    margin-bottom: 2px;
+    font-family: 'Microsoft YaHei';
+    text-align: center;
+}
+.append-div .box-wrap .box {
+    width: 160px;
+    height: 126px;
+    padding-top: 10px;
+}
+.append-div .box-wrap .box .b {
+    line-height: 28px;
+    padding-left: 27px;
+}
+
+.order-price .box-wrap .explain {
+    text-align: center;
+    color: #b9b9b9;
+    padding: 7px;
+}
+
+.order-price .pri-info {
+    padding-right: 50px;
+    line-height: 44px;
+}
+
+.order-price .total-price {
+    margin-bottom: 10px;
+}
+.order-price .total-price .num {
+    font-size: 26px;
+    font-family: 'Microsoft YaHei';
+    color: #ff6600;
+}
+.order-price .total-price .more {
+    color: #a09898;
+}
+
+
+.order-price .more-info {
+    clear: both;
+    border-top: 1px dashed #c1bfbf;
+    padding: 13px 7px;
+}
+.more-info .pt950 {
+    padding-left: 15px;
+    padding-right: 30px;
+}
