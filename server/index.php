@@ -27,18 +27,15 @@ if (!(defined('DEBUG') ? DEBUG : 0)) {
 
 require CORE_ROOT . 'function.php';
 
-// 变量初始化
+// app 执行
 require CORE_ROOT . 'app.php';
 init_var();
 init_env();
 
-
-
-require FrameFile::controller('init');
-
-if (!file_exists(FrameFile::controller($controller))) {
+$controller_filename = AppFile::controller($controller);
+if (!file_exists($controller_filename)) {
     $controller = 'default'; // page 404
-    include FrameFile::controller($controller);
+    include AppFile::controller($controller);
     include smart_view($controller);
     exit;
 }
@@ -48,7 +45,11 @@ if (file_exists(_css($controller)))
     $page['styles'][] = $controller;
 
 // execute controller
-include FrameFile::controller($controller);
+$controller = new 
+include $controller_filename;
+$controller_class_name = ucfirst($controller);
+call_user_func(array($controller_class_name, 'init'));
+call_user_func(array($controller_class_name, $action));
 
 // view
 $arr = explode('?', $view);
