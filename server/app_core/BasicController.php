@@ -24,5 +24,9 @@ class BasicController
         // login check
         if (in_array($controller, $config['controllers_need_login']) && !$has_login)
             redirect("login?back=$controller/$target");
+
+        // auto include if there exists css or js file same name with controller
+        if (!$GLOBALS['by_ajax'] && file_exists(_css($controller)))
+            $page['styles'][] = $controller;
     }
 }

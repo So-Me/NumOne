@@ -6,6 +6,10 @@
 
 /* $_GET, $_POST, $_REQUEST helpers or shortens */
 
+function i(&$param, $or='') {
+    return isset($param)? $param : $or;
+}
+
 function _req($para, $default = '') 
 {
     return isset($_REQUEST[$para]) && $_REQUEST[$para] ? trim($_REQUEST[$para]) : $default;

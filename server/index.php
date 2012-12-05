@@ -35,20 +35,20 @@ init_env();
 require CORE_ROOT . 'BasicModel.php';
 require CORE_ROOT . 'BasicController.php';
 
-$controller_filename = AppFile::controller($controller);
-if (!file_exists($controller_filename)) {
+// all user excute this controller: init
+$init_controller_file = AppFile::controller('init');
+if (file_exists($init_controller_file))
+    include $init_controller_file;
+
+$controller_file = AppFile::controller($controller);
+
+if (!file_exists($controller_file)) {
     $controller = 'default'; // page 404
-    include AppFile::controller($controller);
-    include smart_view($controller);
-    exit;
+    $controller_file = AppFile::controller($controller);
 }
 
-// auto include if there exists css or js file same name with controller
-if (file_exists(_css($controller)))
-    $page['styles'][] = $controller;
-
 // execute controller
-include $controller_filename;
-$controller_class_name = ucfirst($controller);
-call_user_func(array($controller_class_name, 'init'));
-call_user_func(array($controller_class_name, $action));
+include $controller_file;
+$controller_action_file = AppFile::controller("$controller.$action");
+if (file_exists($controller_action_file))
+    include $controller_action_file;

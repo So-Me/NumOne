@@ -46,7 +46,7 @@ class BasicModel
         }, $infos);
     }
 
-    protected function info() // will this bug?
+    public function info() // will this bug?
     {
         $self = get_called_class();
         $ret = Pdb::fetchRow('*', $self::$table, $this->selfCond());
