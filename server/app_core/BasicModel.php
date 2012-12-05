@@ -64,16 +64,9 @@ class BasicModel
 
     public function selfCond() 
     {
-        return array('id=?' => $this->id);
+        return array('id = ?' => $this->id);
     }
 
-    // 废弃 or just another name, better name
-    public function edit($key_or_array, $value = null)
-    {
-        $this->update($key_or_array, $value);
-    }
-
-    // function same as edit()
     public function update($key_or_array, $value = null)
     {
         if($value !== null) { // given by key => value
@@ -89,9 +82,8 @@ class BasicModel
     public function __get($name) 
     {
         if ($name === 'id') return $this->id;
-        if (empty($this->info)) {
+        if (empty($this->info))
             $this->info = $this->info();
-        }
         $info = $this->info;
         if (is_bool($info)) {
             d($info);
@@ -102,14 +94,5 @@ class BasicModel
             throw new Exception("no '$name' when get in class " . get_called_class());
         }
         return $this->info[$name];
-    }
-
-    // 这个函数将何以自处？
-    protected static function defaultConds($conds = array()) 
-    {
-        return array_merge(array(
-            'limit' => 10,
-            'offset' => 0,
-        ), $conds);
     }
 }
