@@ -33,7 +33,6 @@ init_var();
 init_env();
 
 require CORE_ROOT . 'BasicModel.php';
-require CORE_ROOT . 'BasicController.php';
 
 // all user excute this controller: init
 $init_controller_file = AppFile::controller('init');
