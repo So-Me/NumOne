@@ -50,3 +50,8 @@ function init_env()
             require_once $lib_file;
     });
 }
+
+function render_view($view, $opts)
+{
+    include AppFile::view($view); // 渲染 view
+}

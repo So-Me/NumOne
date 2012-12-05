@@ -48,17 +48,7 @@ if (file_exists(_css($controller)))
     $page['styles'][] = $controller;
 
 // execute controller
-$controller = new 
 include $controller_filename;
 $controller_class_name = ucfirst($controller);
 call_user_func(array($controller_class_name, 'init'));
 call_user_func(array($controller_class_name, $action));
-
-// view
-$arr = explode('?', $view);
-if (count($arr) == 2 && $arr[1] == 'master') {
-    $content = $arr[0];
-    $view = 'master';
-}
-
-include smart_view($view); // 渲染 view
