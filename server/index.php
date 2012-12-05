@@ -26,7 +26,6 @@ if (!(defined('DEBUG') ? DEBUG : 0)) {
 }
 
 require CORE_ROOT . 'function.php';
-include CORE_ROOT . 'autoload.php';
 
 // 变量初始化
 require CORE_ROOT . 'app.php';

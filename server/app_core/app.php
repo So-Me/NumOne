@@ -38,4 +38,12 @@ function init_env()
     ob_start();
     session_start();
     date_default_timezone_set('PRC');
+
+    // auto require when using class (model)
+    spl_autoload_register(function ($classname) {
+        $filename = str_replace('\\', DS, $classname) . '.php';
+        $model_file = APP_ROOT . 'model' . DS . $filename;
+        if (file_exists($model_file)) 
+            require_once $model_file;
+    });
 }

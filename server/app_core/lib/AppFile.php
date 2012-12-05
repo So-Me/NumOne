@@ -9,11 +9,16 @@ class AppFile
 {
     public static function controller($name)
     {
-        return APP_ROOT . 'controller' . DIRECTORY_SEPARATOR . $name . '.php';
+        return APP_ROOT . 'controller' . DS . "$name.php";
     }
 
     public static function view($name)
     {
-        return APP_ROOT . 'static' . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . $name . '.php';
+        return APP_ROOT . 'static' . DS . 'view' . DS . "$name.php";
+    }
+
+    public static function lib($name)
+    {
+        return CORE_ROOT . 'lib' . DS . "$name.html";
     }
 }
