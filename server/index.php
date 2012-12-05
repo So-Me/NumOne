@@ -48,6 +48,11 @@ if (!file_exists($controller_file)) {
 
 // execute controller
 include $controller_file;
+
 $controller_action_file = AppFile::controller("$controller.$action");
 if (file_exists($controller_action_file))
     include $controller_action_file;
+
+$controller_action_target_file = AppFile::controller("$controller.$action.$target");
+if (file_exists($controller_action_target_file))
+    include $controller_action_target_file;
