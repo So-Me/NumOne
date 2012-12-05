@@ -21,11 +21,9 @@ if (isset($_SERVER['HTTP_APPNAME'])) { // on server
     define('CSS_VER', time());
 }
 
-define('ROOT', '/');
+define('ROOT', '/'); // 这个东西，尤其可恶，实在不觉得有存在的必要。。
 
-define('DEFAULT_LOGIN_REDIRECT_URL', ROOT); // 登录后的默认导向页面
-
-$config['site']['name'] = 'EnMond';
+$config['site']['name'] = '沃生活';
 
 $config['db'] = array(
     'host' => 'localhost',

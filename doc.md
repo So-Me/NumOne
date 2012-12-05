@@ -2,21 +2,24 @@ data structure
 --------------
 
 **big categrory**
-
 - name
 
 **category**
-
+- big_category
 - name
 
 **shop**
-
 - name 名称
+- category
 - description 详细描述
 - latilongi 经纬度
+- city
 - district 所在区域
 - average 人均消费
 - phone 电话
+
+**relationship**
+- city 1-m distruct *in conf*
 
 json standard
 -------------
