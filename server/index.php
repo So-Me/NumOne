@@ -32,6 +32,9 @@ require CORE_ROOT . 'app.php';
 init_var();
 init_env();
 
+require CORE_ROOT . 'BasicModel.php';
+require CORE_ROOT . 'BasicController.php';
+
 $controller_filename = AppFile::controller($controller);
 if (!file_exists($controller_filename)) {
     $controller = 'default'; // page 404

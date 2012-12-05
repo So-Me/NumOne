@@ -4,7 +4,7 @@
  * @author ryan
  */
 
-class Model 
+class BasicModel
 {
     protected $id = null;
     protected $info = null;
