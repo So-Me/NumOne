@@ -1,5 +1,5 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
+!defined('IN_APP') && exit('ILLEGAL EXECUTION');
 /**
  * @file    config
  * @author  ryan <cumt.xiaochi@gmail.com>

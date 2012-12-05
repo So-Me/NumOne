@@ -1,5 +1,5 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION'); // in fact, even if this is exucted by user, would it show anything?
+!defined('IN_APP') && exit('ILLEGAL EXECUTION'); // in fact, even if this is exucted by user, would it show anything?
 /**
  * @file    common
  * @author  ryan <cumt.xiaochi@gmail.com>

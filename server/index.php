@@ -11,17 +11,13 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// 命名的问题
-// IN_APP
-// AppFile(Class)
-// 这样会比较好一点
-// core 文件夹也是需要的 (CORE_ROOT)
-// Model ==> DefaultModel
-define('IN_PTF', 1);
+define('IN_APP', 1);
 
-define('APP_ROOT', __DIR__ . DIRECTORY_SEPARATOR);
+define('DS', DIRECTORY_SEPARATOR);
+define('APP_ROOT', __DIR__ . DS);
+define('CORE_ROOT', __DIR__ . DS . 'app_core' . DS);
 
-require 'config/common.php';
+include APP_ROOT . 'config/common.php';
 
 // if not debug, mute all error reportings
 if (!(defined('DEBUG') ? DEBUG : 0)) {
@@ -29,15 +25,15 @@ if (!(defined('DEBUG') ? DEBUG : 0)) {
 	error_reporting(0);
 }
 
-require 'lib/function.php';
-include 'lib/autoload.php';
+require CORE_ROOT . 'function.php';
+include CORE_ROOT . 'autoload.php';
 
 // 变量初始化
-require 'init.php';
+require CORE_ROOT . 'app.php';
 init_var();
 init_env();
 
-require 'lib/helper.php';
+
 
 require FrameFile::controller('init');
 

@@ -3,7 +3,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-define('IN_PTF', 1);
+define('IN_APP', 1);
 
 $root = __DIR__ . '/..';
 
