@@ -22,6 +22,3 @@ begin_test();
 $id = 101;
 $model = new BasicModel($id);
 test($model->id, $id, array('name' => 'autoload'));
-
-begin_test();
-test(1, 1, array('name' => 'aaa'));
