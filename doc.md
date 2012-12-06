@@ -62,6 +62,7 @@ json standard
                 "type": "专营门店",
                 "latilongi": "+40.6894-074.0447"
                 "average": 35,
+                "distance": 710,
                 "image": "data/shop/thumb/a.jpg"
                 // ...
             },
@@ -110,4 +111,18 @@ example
 defualt data
 ------------
 
+**big category**
 
+1. 餐饮美食
+ 1. 西餐
+ 2. 粤菜
+ 3. 异国菜
+ 4. 民族清真
+2. 休闲娱乐
+ 1. 美容美体
+ 2. 公园/游乐园
+3. 酒店住宿
+4. 购物
+5. 美容美发
+6. 便民服务
+7. 景点景区
