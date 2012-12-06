@@ -108,10 +108,10 @@ request JSON in android
 
 example
 
-defualt data
+example data
 ------------
 
-**big category**
+**category**
 
 1. 餐饮美食
  1. 西餐
