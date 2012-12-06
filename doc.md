@@ -83,6 +83,8 @@ json standard
 }
 ```
 
+HTTP status code changes along with this error code.
+
 **data** and **error** will never show up together.
 
 u can visit this link to see more:
