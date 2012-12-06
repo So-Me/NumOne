@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-.DS_store
-=======
+
 #################
 ## Eclipse
 #################
@@ -167,4 +165,3 @@ pip-log.txt
 
 # add by xc
 server/data
->>>>>>> 1ff379bc4896748dc5d53b7f68ba4bb0e107c2ee
