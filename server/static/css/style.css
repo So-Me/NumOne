@@ -1,0 +1,331 @@
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+    margin:0;
+    padding:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset,img {
+    border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style:normal;
+    font-weight:normal;
+}
+ol,ul {
+    list-style:none;
+}
+caption,th {
+    text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:normal;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border:0;
+}
+/* reset end */
+
+/* 全局 */
+body {
+    font-size: 13px;
+}
+a {
+    text-decoration: none;
+}
+td, th {
+    border: 1px solid;
+}
+.btn {
+    cursor: pointer;
+    text-align: center;
+}
+.clear-fix {
+    clear: both;
+}
+.header-wrap, .content-wrap, .footer-wrap {
+    clear: both;
+}
+.small-wrap {
+    width: 1000px;
+    margin: auto;
+    clear: both;
+}
+/* text input */
+.ti {
+    padding: 0 3px;
+    height: 20px;
+    border: 1px solid #c5e2ff;
+    box-shadow: 1px 1px 1px  #919191 inset;
+}
+/*button*/
+.mbtn {
+    border: none;
+    background-color: #0073b3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.mbtn:hover {
+    background-color: #1389CA;
+}
+
+.msg {
+    background-color: #F7F1C6;
+    border: 1px solid #3C3C0C;
+    padding-left: 10px;
+    color: #9E1A1A;
+    font-weight: bold;
+    line-height: 33px;
+}
+
+/*table*/
+.table-row {
+    clear: both;
+    display: block;
+}
+
+/* 头部 */
+.header-wrap {
+}
+.header-wrap a, .header-wrap span {
+    font-size: 13px;
+    line-height: 24px;
+}
+
+.header-wrap .gold-price {
+    float: left;
+    margin-left: 5px;
+}
+.header-wrap .gold-price span {
+}
+.header-wrap .gold-price .lbl {
+    font-weight: bold;
+    padding-right: 5px;
+}
+.header-wrap .gold-price .info {
+    color: #2b749d;
+    padding-right: 5px;
+}
+
+.header-wrap .account {
+    float: right;
+}
+.header-wrap .account span, .header-wrap .account a {
+}
+.header-wrap .account .welcom {
+    color: #a5a5a5;
+    padding-right: 23px;
+}
+.header-wrap .account .cart {
+    color: #e73600;
+    padding-right: 23px;
+}
+.header-wrap .account .my-order {
+    color: #3e3e3e;
+    padding-right: 23px;
+}
+.header-wrap h1:before {
+    display: block;
+    content: "";
+    height: 0;
+    border-top: 1px solid #f3f3f3;
+}
+.header-wrap h1 {
+    border-top: 1px solid #d7d7d7;
+    clear: both;
+}
+.header-wrap h1 a {
+    width: 1000px;
+    margin: auto;
+    display: block;
+    
+}
+.header-wrap h1 a img {
+    display: block;
+    margin: 20px 30px;
+}
+
+/* 附加层 */
+.append-parent {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 1, 1, 0.2);
+    display: none;
+    z-index: 2;
+}
+.append-div {
+    background-color: white;
+    margin: auto;
+    display: none;
+    position: absolute;
+}
+.append-div .close-btn {
+    cursor: pointer;
+    float: right;
+    display: block;
+}
+.append-div > .title {
+    cursor: move;
+}
+
+/*中部*/
+.content-wrap {
+    width: 1000px;
+    margin: auto;
+}
+
+/* 脚部 */
+.footer-wrap {
+    clear: both;
+    background-color: #e1e1e1;
+    text-align: center;
+    color: #8a8a8a;
+    padding: 15px;
+    border-top: 1px solid #cfcfcf;
+}
+
+/* 404 页面 */
+
+
+
+/* login or register */
+.login-wrap .intro, .register-wrap .intro {
+    padding: 90px 0 20px 56px;
+    font-size: 15px;
+    color: #0073b3;
+}
+form.logreg div {
+    margin: 13px 0;
+    clear: both;
+}
+form.logreg div label {
+    display: inline;
+    float: left;
+    width: 110px;
+    text-align: right;
+    line-height: 27px;
+    font-size: 14px;
+}
+.logreg label.error {
+    width: auto;
+    float: none;
+}
+form.logreg .ok-btn {
+    margin-top: 20px;
+    margin-left: 110px;
+    margin-bottom: 100px;
+    width: 98px;
+    height: 36px;
+    font-size: 16px;
+}
+.logreg .ti {
+    width: 180px;
+    height: 25px;
+    line-height: 25px;
+}
+
+/* 侧边栏 */
+.main-nav {
+    float: left;
+    width: 150px;
+    background-color: #c5e2ff;
+}
+.main-nav dt {
+    font-weight: bold;
+    background-color: #3f77ac;
+    padding-left: 25px;
+    height: 30px;
+    line-height: 30px;
+}
+.main-nav dt a {
+    color: white;
+}
+.main-nav dd {
+    padding: 4px 10px 4px 10px;
+}
+.main-nav dd a {
+    color: #3f77ac;
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 15px;
+}
+.main-nav dd.on a {
+    background-color: #96c8fb;
+}
+.right-frame {
+    float: right;
+    width: 80%;
+}
+
+/* 面包屑导航 */
+.crumb {
+    background-color: #f7f7f7;
+    height: 28px;
+    line-height: 28px;
+    border-top: 1px solid #d2d2d2;
+    padding-left: 15px;
+}
+
+/* 搜索框 */
+div.search .e {
+    display: block;
+    float: left;
+}
+
+/* 模拟表格 */
+.col {
+    display: block; /*for ie 6, fuck!!!*/
+    float: left;
+    width: 7%;
+}
+.col.title {
+    font-weight: bold;
+    text-align: center;
+}
+
+/*翻页*/
+.paging {
+    color: #8d8d8d;
+}
+.paging .btn {
+    color: #8d8d8d;
+    display: block;
+    float: left;
+    height: 22px;
+    border: 1px solid #c5c5c5;
+    line-height: 22px;
+    text-align: center;
+}
+.paging .btn:hover {
+    background-color: #F1F1F1;
+}
+.paging .num {
+    width: 22px;
+    margin: 9px 9px 9px 0;
+}
+.paging .on {
+    background-color: #dfdfdf;
+}
+.paging .ommision {
+    display: block;
+    float: left;
+    margin: 9px;
+}
+.paging .next-page-btn {
+    width: 60px;
+    margin: 9px;
+}
+
+/*错误提示*/
+.error {
+    color: red;
+}
+
