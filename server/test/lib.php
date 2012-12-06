@@ -2,7 +2,11 @@
 
 function begin_test()
 {
-    echo '<hr><!-- test begin -->' . PHP_EOL;
+    if (!isset($GLOBALS['case_no']))
+        $GLOBALS['case_no'] = 0;
+    
+    echo '<li><span>', $GLOBALS['case_no'], '</span>', PHP_EOL;
+    $GLOBALS['case_no'] = $GLOBALS['case_no'] + 1;
 }
 
 function test($I_got, $u_thought, $options = array())

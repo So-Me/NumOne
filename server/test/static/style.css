@@ -16,9 +16,12 @@
     clear: both;
 }
 
-h1, h2, ol {
+h1, h2, ul {
     margin: 0;
     font-family: "Skolar Bold","Times New Roman",serif;
+}
+ul li {
+    clear: both;
 }
 hr {
     margin: 1px;
@@ -35,4 +38,8 @@ h1 {
 h2 {
     font-size: large;
     font-weight: 
+}
+
+#pre-pass-box {
+    display: none;
 }

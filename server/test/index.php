@@ -32,10 +32,14 @@ init_env();
     <h1><a href="?">Test for Cheng</a></h1>
     <a href="/">exit</a>
     <a class="clear btn" href="?exit=1">clear all side effects in db</a>
-    <div class="conclusion fail" id="pre-box">SOME FAIL!</div>
-    <ol><?php include 'test.php'; ?></ol>
+    <div class="conclusion pass" id="pre-pass-box">ALL PASS</div>
+    <div class="conclusion fail" id="pre-fail-box">SOME FAIL!</div>
+    <ul><?php include 'test.php'; ?></ul>
     <div class="conclusion <?= $all_pass? 'pass' : 'fail' ?>"><?= $all_pass? 'ALL PASS' : 'SOME FAIL!' ?></div>
-    <script src="static/hide.js"></script>
+    <?php if ($all_pass): ?>
+        <script src="static/hide_fail.js"></script>
+    <?php endif ?>
+    
 </body>
 </html>
 

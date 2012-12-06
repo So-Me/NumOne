@@ -4,7 +4,6 @@
 Pdb::setConfig($config['db']);
 
 // clear side effects for all
-
 // unset all session
 if (1) {
     foreach ($_SESSION as $key => $value) {
@@ -19,9 +18,11 @@ $all_pass = true;
 
 require CORE_ROOT . 'BasicModel.php';
 
-// case 1 autoload
 begin_test();
 $id = 101;
 $model = new BasicModel($id);
 test($model->id, $id, array(
     'name' => 'autoload'));
+
+begin_test();
+test(1, 11, array('name' => 'aaa'));
