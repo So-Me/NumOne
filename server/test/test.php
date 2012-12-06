@@ -1,10 +1,5 @@
 <?php
-
-require 'lib.php'; // functions for test
-
-require_once APP_ROOT . 'lib/function.php';
-require_once APP_ROOT . 'lib/autoload.php';
-include_once APP_ROOT . 'config/common.php';
+!(defined('IN_APP') && defined('ON_TEST')) && exit('ILLEGAL EXECUTION');
 
 Pdb::setConfig($config['db']);
 
@@ -21,6 +16,8 @@ if (1) {
 include 'clear_db.php';
 
 $all_pass = true;
+
+require CORE_ROOT . 'BasicModel.php';
 
 // case 1 autoload
 begin_test();

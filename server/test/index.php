@@ -3,12 +3,23 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-define('IN_PTF', 1);
+define('IN_APP', 1);
+define('ON_TEST', 1);
+
+define('DS', DIRECTORY_SEPARATOR);
+
 define('APP_ROOT', __DIR__ . '/../');
+define('CORE_ROOT', APP_ROOT . 'app_core/');
+define('TEST_ROOT', __DIR__ . '/');
 
-date_default_timezone_set('Asia/Hong_Kong');
+require TEST_ROOT . 'lib.php'; // functions for test
 
-session_start();
+include_once APP_ROOT . 'config/common.php';
+
+require_once CORE_ROOT . 'function.php';
+require_once CORE_ROOT . 'app.php';
+
+init_env();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="zh-CN">
