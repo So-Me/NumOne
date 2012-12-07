@@ -12,6 +12,7 @@ class Shop extends BasicModel
     {
         $info = $this->info(); // is this efficient?
         $info['images'] = $this->images();
+        return $info;
     }
 
     public function images()
