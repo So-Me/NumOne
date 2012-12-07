@@ -1,6 +1,10 @@
 <?php
 !defined('IN_APP') && exit('ILLEGAL EXECUTION');
 
-$categories = Category::read();
+$id = _req('id');
+
+$shop = new Shop($id);
+
+$info = $shop->infoArray();
 
 output_json($categories);

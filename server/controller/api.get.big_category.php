@@ -1,10 +1,6 @@
 <?php
 !defined('IN_APP') && exit('ILLEGAL EXECUTION');
 
-$id = _req('id');
+$big_categories = BigCategory::readArray();
 
-$shop = new Shop($id);
-
-$info = $shop->infoArray();
-
-output_json($info);
+output_json($big_categories);
