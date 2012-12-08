@@ -3,4 +3,4 @@
 
 $data = BigCategory::jsonData();
 
-output_jsons($data);
+output_data($data);

@@ -8,23 +8,21 @@ class Category extends BasicModel
 {
     public static $table = 'category';
 
-    public static jsonData($conds)
+    public static function jsonData($conds)
     {
         $kind = 'Category';
-        $startIndex = $conds['startIndex'];
-        $itemsPerPage = $conds['itemsPerPage'];
-        list($tables, $conds, $orderby, $tail) = slef::buildDbArgs($conds);
+        list($tables, $conds, $orderby, $tail) = self::buildDbArgs($conds);
         $items = Pdb::fetchAll('*', $tables, $conds, $orderby, $tail);
         $itemCount = count($items);
-        return compact('kind', 'totalItems', 'startIndex', 'itemPerPage', 'itemCount', 'items');
+        return compact('kind', 'totalItems', 'itemCount', 'items');
     }
 
     public static function buildDbArgs($conds)
     {
         extract($conds);
-        $tail = "LIMIT $itemPerPage OFFSET $startIndex";
+        $tail = "";
         $tables = array(self::$table);
-        $conds = array('big_category' => $conds['BigCategory']);
+        $conds = array('big_category' => $conds['BigCategoryId']);
         $orderby = array();
         return array($tables, $conds, $orderby, $tail);
     }

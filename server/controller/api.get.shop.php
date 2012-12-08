@@ -7,4 +7,4 @@ $shop = new Shop($id);
 
 $data = $shop->jsonData();
 
-output_json($data);
+output_data($data);

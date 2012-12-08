@@ -2,19 +2,24 @@
 /**
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
-function output_json($data, $opts = array())
-{
 
-    $arr = array('apiVersion' => '1.0');
-    $arr['data'] = array_merge($opts, $data);
-    header('Content-Type:application/json');
-    echo json_encode($arr);
+function output_data($data, $opts = array())
+{
+    output_json(array('data' => $data));
 }
 
-function output_jsons($data, $opts = array())
+function output_error($code, $msg = 'error')
 {
-    $opts['items'] = $data;
-    if (!isset($opts['itemCount']))
-        $opts['itemCount'] = count($data);
-    output_json($opts);
+    $error = array(
+        'code' => $code,
+        'message' => $msg);
+    output_json(array('error' => $error));
+}
+
+function output_json($arr)
+{
+    $arr['apiVersion'] = '1.0';
+    header('Content-Type:application/json');
+    echo json_encode($arr);
+    exit;
 }
