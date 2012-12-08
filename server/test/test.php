@@ -19,11 +19,6 @@ $all_pass = true;
 require CORE_ROOT . 'BasicModel.php';
 
 begin_test();
-$id = 101;
-$model = new BasicModel($id);
-test($model->id, $id, array('name' => 'autoload'));
-
-begin_test();
 $province = Province::add('广东省');
 test(Province::count(), 1, array('name' => 'add province'));
 

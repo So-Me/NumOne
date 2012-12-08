@@ -4,6 +4,8 @@
  * @author ryan
  */
 
+// get_called_class() can be replaced by static::
+
 class BasicModel
 {
     protected $id = null;
@@ -35,7 +37,7 @@ class BasicModel
         if (method_exists($self, 'buildDbArgs')) {
             list($tables, $conds) = $self::buildDbArgs($conds);
         } else {
-            $tables = $self::$table;
+            $tables = self::table(); // self must be BasicModel
             $conds = array();
         }
         return Pdb::count($tables, $conds);
@@ -72,14 +74,14 @@ class BasicModel
         return array('id = ?' => $this->id);
     }
 
-    // public static function table()
-    // {
-    //     $self = get_called_class();
-    //     if (isset($self::$table))
-    //         return $self::$table;
-    //     else 
-    //         return strtolower($self);
-    // }
+    public static function table()
+    {
+        $self = get_called_class();
+        if (isset($self::$table))
+            return $self::$table;
+        else 
+            return strtolower($self);
+    }
 
     public function update($key_or_array, $value = null)
     {

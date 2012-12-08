@@ -6,9 +6,11 @@
 
 class City extends BasicModel
 {
-    public static $table = 'category';
-
-    public static function add($conds)
+    public static function add(Province $p, $name)
     {
+        Pdb::insert(
+            array('province' => $p->id, 'name' => $name), 
+            self::table());
+        return new self(Pdb::lastInsertId());
     }
 }
