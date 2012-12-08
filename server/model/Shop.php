@@ -59,10 +59,24 @@ class Shop extends BasicModel
     public static function buildDbArgs($conds)
     {
         extract($conds);
-        $tables = self::table();
+        $tables = array(self::table()); // as 也可以去掉哦
         $conds = array();
         if (isset($categoryid)) {
-            $conds['category = ?'] = $categoryid;
+            $conds['shop.category = ?'] = $categoryid;
+        }
+        if (!isset($categoryid) && isset($bigcategoryid)) {
+            $tables[] = Category::table() . ' AS c';
+            $conds['shop.category = c.id'] = null;
+            $conds['c.big_category'] = $bigcategoryid;
+        }
+
+        if (isset($districtid)) {
+            $conds['shop.district = ?'] = $districtid;
+        }
+        if (!isset($district) && isset($city)) {
+            $tables[] = District::table() . ' AS d';
+            $conds['shop.district = d.id'] = null;
+            $conds['d.city = ?'] = $city;
         }
         $orderby = array();
         return array($tables, $conds, $orderby);
