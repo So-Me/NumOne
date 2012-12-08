@@ -10,9 +10,9 @@ class BigCategory extends BasicModel
 
     public static function jsonData($conds = array())
     {
+        $kind = 'BigCategory';
         $items = Pdb::fetchAll('*', self::$table);
         $itemCount = count($items);
-        $kind = self::$table;
         $totalItems = $itemCount;
         return compact('kind', 'totalItems', 'itemCount', 'items');
     }
