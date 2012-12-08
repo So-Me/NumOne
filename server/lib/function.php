@@ -10,6 +10,7 @@ function output_data($data, $opts = array())
 
 function output_error($code, $msg = 'error')
 {
+    header("HTTP/1.1 $code $msg");
     $error = array(
         'code' => $code,
         'message' => $msg);
