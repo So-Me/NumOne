@@ -2,8 +2,9 @@
 !defined('IN_APP') && exit('ILLEGAL EXECUTION');
 
 $startIndex = _req('startIndex') ?: 0;
-$itemPerPage = _req('itemsPerPage') ?: 10;
+$itemsPerPage = _req('itemsPerPage') ?: 10;
 
-$data = $shop->jsonData();
+$conds = compact('startIndex', 'itemsPerPage');
+$data = Shop::jsonDatas($conds);
 
 output_data($data);

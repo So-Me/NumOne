@@ -8,6 +8,18 @@ class Shop extends BasicModel
 {
     public static $table = 'shop';
 
+    public static function jsonDatas($conds)
+    {
+        $totalItems = self::count($conds);
+        $startIndex = $conds['startIndex'];
+        $itemsPerPage = $conds['itemsPerPage'];
+        $tail = "LIMIT $itemsPerPage OFFSET $startIndex";
+        list($tables, $conds, $orderby) = self::buildDbArgs($conds);
+        $items = Pdb::fetchAll('*', $tables, $conds, $orderby, $tail);
+        $itemCount = count($items);
+        return compact('startIndex', 'totalItems', 'startIndex', 'itemsPerPage', 'itemCount', 'items');
+    }
+
     public function jsonData()
     {
         $info = $this->infoArray();
@@ -28,5 +40,17 @@ class Shop extends BasicModel
     public function images()
     {
         return Pdb::fetch('src', 'shop_image', array('shop = ?' => $this->id));
+    }
+
+    public static function buildDbArgs($conds)
+    {
+        extract($conds);
+        $tables = self::$table;
+        $conds = array();
+        if (isset($categoryid)) {
+            $conds['category = ?'] = $categoryid;
+        }
+        $orderby = array();
+        return array($tables, $conds, $orderby);
     }
 }

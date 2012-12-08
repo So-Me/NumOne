@@ -392,7 +392,7 @@ class PdoHelper {
         $sm = $this->prepare("SELECT $fields FROM $tables $where $orders $tail");
         self::bindValues($sm, array_values($cond_arr));
         if ($sm->execute()) {
-            $ret = false;
+            $ret = array();
             while ($row = $sm->fetch(PDO::FETCH_ASSOC)) {
                 if (count($row) == 1) {
                     // will it ok?
