@@ -2,13 +2,11 @@
 !defined('IN_APP') && exit('ILLEGAL EXECUTION');
 
 $BigCategoryId = _req('BigCategoryId');
-if (empty($BigCategoryId)) {
-    output_error(400, "no BigCategoryId");
-}
-$startIndex = _req('startIndex') ?: 0;
-$itemPerPage = _req('itemsPerPage') ?: 10;
 
-$data = Category::jsonData(
-    compact('BigCategoryId', 'startIndex', 'itemPerPage'));
+$conds = array();
+if ($BigCategoryId) {
+    $conds['BigCategoryId'] = $BigCategoryId;
+}
+$data = Category::jsonData($conds);
 
 output_data($data);

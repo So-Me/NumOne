@@ -22,7 +22,10 @@ class Category extends BasicModel
         extract($conds);
         $tail = "";
         $tables = array(self::$table);
-        $conds = array('big_category' => $conds['BigCategoryId']);
+        $conds = array();
+        if (isset($conds['BigCategoryId'])) {
+            $conds['big_category'] = $conds['BigCategoryId'];
+        }
         $orderby = array();
         return array($tables, $conds, $orderby, $tail);
     }
