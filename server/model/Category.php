@@ -8,7 +8,7 @@ class Category extends BasicModel
 {
     public static $table = 'category';
 
-    public static function jsonData($conds)
+    public static function add($conds)
     {
         $kind = 'Category';
         list($tables, $conds, $orderby, $tail) = self::buildDbArgs($conds);

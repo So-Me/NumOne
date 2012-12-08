@@ -32,7 +32,12 @@ class BasicModel
     public static function count($conds = array())
     {
         $self = get_called_class();
-        list($tables, $conds) = $self::buildDbArgs($conds);
+        if (method_exists($self, 'buildDbArgs')) {
+            list($tables, $conds) = $self::buildDbArgs($conds);
+        } else {
+            $tables = $self::$table;
+            $conds = array();
+        }
         return Pdb::count($tables, $conds);
     }
 
@@ -66,6 +71,15 @@ class BasicModel
     {
         return array('id = ?' => $this->id);
     }
+
+    // public static function table()
+    // {
+    //     $self = get_called_class();
+    //     if (isset($self::$table))
+    //         return $self::$table;
+    //     else 
+    //         return strtolower($self);
+    // }
 
     public function update($key_or_array, $value = null)
     {

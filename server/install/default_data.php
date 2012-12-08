@@ -1,4 +1,5 @@
 <?php
+
 $default_categories = '
 1. 餐饮美食
  1. 西餐
