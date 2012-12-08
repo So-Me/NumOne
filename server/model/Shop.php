@@ -11,7 +11,7 @@ class Shop extends BasicModel
     public function jsonData()
     {
         $info = $this->infoArray();
-        $info['kind'] = self::$table;
+        $info['kind'] = 'Shop';
         return $info;
     }
 
