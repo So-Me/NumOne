@@ -18,7 +18,10 @@ class Shop extends BasicModel
     public function infoArray()
     {
         $info = $this->info(); // is this efficient?
-        $info['images'] = $this->images();
+        $images = $this->images();
+
+        $info['images'] = $images;
+        $info['imageCount'] = count($images);
         return $info;
     }
 

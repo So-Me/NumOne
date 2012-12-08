@@ -4,3 +4,6 @@
 if (!$by_ajax && !DEBUG) {
     exit;
 }
+
+$kind = _req('kind');
+$target = $kind;

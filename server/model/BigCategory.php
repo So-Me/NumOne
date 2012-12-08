@@ -10,19 +10,10 @@ class BigCategory extends BasicModel
 
     public static function jsonData($conds = array())
     {
-        list($tables, $conds, $orderby, $tail) = slef::buildDbArgs($conds);
-        $items = Pdb::fetchAll('*', $tables, $conds, $orderby, $tail);
-        $itmeCount = count($items);
+        $items = Pdb::fetchAll('*', self::$table);
+        $itemCount = count($items);
         $kind = self::$table;
-        return compact('kind', 'itmeCount', 'items');
-    }
-
-    public static function buildDbArgs($conds)
-    {
-        $tables = array(self::$table);
-        $conds = ;
-        $orderby = array();
-        $tail = "LIMIT $itemPerPage OFFSET $startIndex";
-        return array($tables, $conds, $orderby, $tail);
+        $totalItems = $itemCount;
+        return compact('kind', 'totalItems', 'itemCount', 'items');
     }
 }

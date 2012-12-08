@@ -29,66 +29,8 @@ data structure
 json standard
 -------------
 
-**json example for shop**
-
-```json
-{
-    "data": {
-        "kind": "shop",
-        "name": "xxx",
-        "description": "xxx",
-        "imageCount": 2
-        "images": [
-            "/data/shop/image/a.jpg",
-            "/data/shop/image/b.jpg"
-        ]
-    }
-}
-```
-
-**json example for shop list**
-
-```json
-{
-    "data": {
-        "kind": "shoplist",
-        "totalItems": 6741,
-        "startIndex": 1,
-        "itemsPerPage": 10,
-        "itemCount": 10,
-        "items": [
-            {
-                "name": "xxx",
-                "type": "专营门店",
-                "latilongi": "+40.6894-074.0447"
-                "average": 35,
-                "distance": 710,
-                "image": "data/shop/thumb/a.jpg"
-                // ...
-            },
-            // ...
-        ]
-    }
-}
-```
-
-**json example for error**
-
-```json
-{
-    "error": {
-        "code": 404,
-        "message": "can't find"
-    }
-}
-```
-
-HTTP status code changes along with this error code.
-
-**data** and **error** will never show up together.
-
-u can visit this link to see more:
-https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md
+json examples have been move to
+https://github.com/So-Me/NumOne/wiki/JSON-example
 
 interfaces
 ----------
