@@ -6,8 +6,6 @@
 
 class Category extends BasicModel
 {
-    public static $table = 'category';
-
     public static function add($conds)
     {
         $kind = 'Category';

@@ -34,6 +34,8 @@ begin_test();
 $info = array(
     'name' => '兰州拉面',
     'category' => 4,
-    'city' => '深圳',
-    'district' => '福田区',
-    '');
+    'district' => $district->id,
+    'latilongi' => '+40.6894-074.0447',
+    'images' => array('/test/static/img/5123370_143953049318_2.jpg'));
+$shop = Shop::add($info);
+test(Shop::count(), 1, array('add shop'));

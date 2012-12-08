@@ -1,6 +1,6 @@
 <?php
 
-$tables = array('province', 'city', 'district');
+$tables = array('province', 'city', 'district', 'shop', 'shop_image');
 foreach ($tables as $t) {
     Pdb::exec("TRUNCATE TABLE $t"); // but why here??? Province::$table not work?
 }

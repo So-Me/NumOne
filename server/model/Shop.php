@@ -6,7 +6,21 @@
 
 class Shop extends BasicModel
 {
-    public static $table = 'shop';
+    public static function add($info)
+    {
+        if (isset($info['images'])) {
+            $images = $info['images'];
+            unset($info['images']);
+        }
+        Pdb::insert($info, self::table());
+        $shop = new self(Pdb::lastInsertId());
+        if (isset($images)) {
+            foreach ($images as $img_src) {
+                ShopImage::add($shop, $img_src);
+            }
+        }
+        return $shop;
+    }
 
     public static function jsonDatas($conds)
     {
@@ -45,7 +59,7 @@ class Shop extends BasicModel
     public static function buildDbArgs($conds)
     {
         extract($conds);
-        $tables = self::$table;
+        $tables = self::table();
         $conds = array();
         if (isset($categoryid)) {
             $conds['category = ?'] = $categoryid;
