@@ -12,6 +12,7 @@ class BigCategory extends BasicModel
     {
         $items = Pdb::fetchAll('*', self::$table);
         $itmeCount = count($items);
-        return compact('itmeCount', 'items');
+        $kind = self::$table;
+        return compact('kind', 'itmeCount', 'items');
     }
 }
