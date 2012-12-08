@@ -8,6 +8,13 @@ class Shop extends BasicModel
 {
     public static $table = 'shop';
 
+    public function jsonData()
+    {
+        $info = $this->infoArray();
+        $info['kind'] = self::$table;
+        return $info;
+    }
+
     public function infoArray()
     {
         $info = $this->info(); // is this efficient?

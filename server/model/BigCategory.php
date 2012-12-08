@@ -8,8 +8,10 @@ class BigCategory extends BasicModel
 {
     public static $table = 'big_category';
 
-    public static readArray()
+    public static function jsonData()
     {
-        return Pdb::fetchAll('*', self::$table);
+        $items = Pdb::fetchAll('*', self::$table);
+        $itmeCount = count($items);
+        return compact('itmeCount', 'items');
     }
 }

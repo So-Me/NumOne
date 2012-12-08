@@ -1,6 +1,6 @@
 <?php
 !defined('IN_APP') && exit('ILLEGAL EXECUTION');
 
-$big_categories = BigCategory::readArray();
+$data = BigCategory::jsonData();
 
-output_json($big_categories);
+output_jsons($data);

@@ -27,7 +27,7 @@ $config['site']['name'] = '沃生活';
 
 $config['db'] = array(
     'host' => 'localhost',
-    'dbname' => 'jewelry',
+    'dbname' => 'local',
     'username' => 'root',
     'password' => 'xiaosan'
 );

@@ -3,6 +3,7 @@
 /**
  * 现在看来这个也可以用来 js css 啥的
  * Usage: FrameFile::controller('index');
+ * 应该有个CoreFile类？
  */
 
 class AppFile

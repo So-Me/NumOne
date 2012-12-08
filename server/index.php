@@ -34,6 +34,10 @@ init_env();
 
 require CORE_ROOT . 'BasicModel.php';
 
+$user_lib_file = APP_ROOT . 'lib' . DS . 'function.php';
+if (file_exists($user_lib_file))
+    require_once $user_lib_file;
+
 // all user excute this controller: init
 $init_controller_file = AppFile::controller('init');
 if (file_exists($init_controller_file))

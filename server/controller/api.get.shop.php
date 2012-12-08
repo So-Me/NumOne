@@ -5,6 +5,6 @@ $id = _req('id');
 
 $shop = new Shop($id);
 
-$info = $shop->infoArray();
+$data = $shop->jsonData();
 
-output_json($categories);
+output_json($data);
