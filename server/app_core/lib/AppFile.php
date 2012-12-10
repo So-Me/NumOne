@@ -15,11 +15,11 @@ class AppFile
 
     public static function view($name)
     {
-        return APP_ROOT . 'static' . DS . 'view' . DS . "$name.php";
+        return APP_ROOT . DS . 'view' . DS . "$name.html";
     }
 
     public static function lib($name)
     {
-        return CORE_ROOT . 'lib' . DS . "$name.html";
+        return CORE_ROOT . 'lib' . DS . "$name.app";
     }
 }
