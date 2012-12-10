@@ -1,7 +1,8 @@
 <?php
 !(defined('IN_APP') && defined('ON_TEST')) && exit('ILLEGAL EXECUTION');
 
-Pdb::setConfig($config['db']);
+$dbConfig = array_merge($config['db'], array('force' => 'master'));
+Pdb::setConfig($dbConfig);
 
 // clear side effects for all
 // unset all session

@@ -16,6 +16,7 @@ class Pdb
     const SLAVE = 2;
     
     private static $ms = self::MASTER; // master or slave
+    private static $forceMaster = false;
     private static $config = null;
     
     private static $dbs = null; // db slave
@@ -26,6 +27,7 @@ class Pdb
         if (empty($config)) {
             throw new Exception('config array empty');
         }
+
         $config = array_merge(
             array(
                 'host' => 'localhost',
@@ -35,6 +37,10 @@ class Pdb
         );
         if (!empty(self::$config)) { // 只准运行一次
             throw new Exception('db can be set config only once');
+        }
+
+        if (isset($config['force']) && $config['force'] === 'master') {
+            self::$forceMaster = true;
         }
 
         // username and password
@@ -86,6 +92,7 @@ class Pdb
 
         $config = compact('dsn', 'dsn_s', 'username', 'password');
         self::$config = $config;
+
     }
 
     private static function makeDsn($arg) 
@@ -100,14 +107,14 @@ class Pdb
     public static function instance($ms = self::MASTER) 
     {
         
-        if ($ms == self::MASTER) {
+        if ($ms == self::MASTER || self::$forceMaster) {
             if (self::$dbm === null) {
                 self::$dbm = new PdoHelper(self::$config, PdoHelper::MASTER);
+                if (self::$forceMaster)
+                    self::$dbs = self::$dbm;
             }
-        } else {
-            if (self::$dbs === null) {
-                self::$dbs = new PdoHelper(self::$config, PdoHelper::SLAVE);
-            }
+        } elseif (self::$dbs === null) {
+            self::$dbs = new PdoHelper(self::$config, PdoHelper::SLAVE);
         }
     }
     
@@ -175,18 +182,17 @@ class Pdb
 
     public static function log()
     {
-        return self::getLog();
-    }
-
-    public static function getLog() { // how about change this name to log()???
         $ret = array();
         if (self::$dbm) {
-            $ret['MASTER'] = self::$dbm->getLog();
+            $masterLog = self::$dbm->getLog();
         }
         if (self::$dbs) {
-            $ret['SLAVE'] = self::$dbs->getLog();
+            $slaveLog = self::$dbs->getLog();
         }
-        return $ret;
+        return array(
+            'MASTER' => $masterLog, 
+            'SLAVE' => $slaveLog, 
+            'forceMaster' => self::$forceMaster);
     }
 
     public function close() {
