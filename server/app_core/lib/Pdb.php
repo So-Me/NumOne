@@ -377,6 +377,13 @@ class PdoHelper {
         // if ret arr length is 1, then simplify it?
         if (is_array($fields)) // precomposite
             $fields = implode(',', $fields);
+
+        // maybe we don't need this...
+        if (preg_match('/[\(\)]|AS/', $fields)) {
+            $where_verb = "HAVING";
+        } else {
+            $where_verb = "WHERE";
+        }
         if (is_array($tables))
             $tables = implode (',', $tables);
         if ($conds === null)
@@ -385,7 +392,7 @@ class PdoHelper {
         if (is_array($cond_arr)) { // ????
             $conds = implode(' AND ', array_keys($cond_arr));
         }
-        $where = $conds? "WHERE $conds" : '';
+        $where = $conds? "$where_verb $conds" : '';
         if (is_array($orders))
             $orders = implode (',', $orders);
         $orders = $orders? "ORDER BY $orders" : '';

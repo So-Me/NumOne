@@ -42,18 +42,23 @@ class Shop extends BasicModel
         $startIndex = $conds['startIndex'];
         $itemsPerPage = $conds['itemsPerPage'];
         $tail = "LIMIT $itemsPerPage OFFSET $startIndex";
+        list($tables, $conds) = self::buildDbArgs($conds);
         $fields = '*';
         $orderby = array();
-        if ($conds['distance'] && strlen($conds['latilongi']) > 0) {
+        if ($distance && strlen($latilongi) > 0) {
             list($latitude, $longitude) = break_latilongi($latilongi);
-            $distanceExp = "( 6371 * acos( cos( radians($latitude) ) * cos( radians( shop.latitude ) ) * cos( radians( shop.longitude ) - radians($longitude) ) + sin( radians($latitude) ) * sin( radians( shop.latitude ) ) ) )";
+            $distanceExp = "((6371 * acos(cos(radians($latitude)) * cos(radians(shop.latitude)) * cos(radians(shop.longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(shop.latitude)))) * 1000)";
             $fields .= ", $distanceExp AS distance";
             $conds["distance < ?"] = $distance;
             $orderby[] = 'distance ASC';
         }
-        list($tables, $conds) = self::buildDbArgs($conds);
+
         $items = Pdb::fetchAll($fields, $tables, $conds, $orderby, $tail);
         $itemCount = count($items);
+        if ($itemCount !== $totalItems) {
+            d(Pdb::log());
+            throw new Exception("itemCount: $itemCount, totalItems: $totalItems are not equal");
+        }
         return compact('startIndex', 'totalItems', 'startIndex', 'itemsPerPage', 'itemCount', 'items');
     }
 
@@ -76,7 +81,7 @@ class Shop extends BasicModel
 
     public function images()
     {
-        return Pdb::fetch('src', 'shop_image', array('shop = ?' => $this->id));
+        return Pdb::fetchAll('src', 'shop_image', array('shop = ?' => $this->id));
     }
 
     public static function buildDbArgs($conds)

@@ -56,7 +56,7 @@ class BasicModel
     public function info() // will this bug?
     {
         $self = get_called_class();
-        $ret = Pdb::fetchRow('*', $self::$table, $this->selfCond());
+        $ret = Pdb::fetchRow('*', $self::table(), $this->selfCond());
         if (empty($ret))
             throw new Exception(get_called_class() . " no id: $this->id");
         $this->info = $ret;

@@ -22,6 +22,7 @@ if (file_exists($user_lib_file))
     require_once $user_lib_file;
 
 // test for add
+
 begin_test();
 $province = Province::add('广东省');
 test(Province::count(), 1, array('name' => 'add province'));
@@ -39,7 +40,7 @@ $info = array(
     'name' => '兰州拉面',
     'category' => 4,
     'district' => $district->id,
-    'latilongi' => '22.546692,114.065162', // 真的有这家兰州拉面
+    'latilongi' => '22.546692,114.065162', // 真的有这家兰州拉面 广东省深圳市福田区福中一路
     'images' => array('/test/static/img/5123370_143953049318_2.jpg'));
 $shop = Shop::add($info);
 test(Shop::count(), 1, array('name' => 'add shop'));
@@ -63,11 +64,24 @@ test($i->big_category, $bigCategoryId, array('name' => "get Category: $url"));
 
 begin_test();
 $query = array(
-    'kind' => 'ShopList', 'distance' => 1000, 
-    'latilongi' => '22.543105,114.057907',
-    'districtId' => 1);
+    'kind' => 'ShopList', 
+    'distance' => 1000, 
+    'latilongi' => '22.548867,114.072197', // 兰州拉面1000米以内
+    'districtId' => $district->id);
 $url = build_url($query);
 $data = query($url);
-d($data);
 $i = reset($data->items);
-test($i->name, 'xxxxx', array('name' => "get ShopList: $url"));
+test($i->name, '兰州拉面', array('name' => "get ShopList(within distance): $url"));
+
+begin_test();
+$query['latilongi'] = '22.566305,114.09138'; // 1000米以外
+$url = build_url($query);
+$data = query($url);
+$ic = $data->itemCount;
+test($ic, 0, array('name' => "get ShopList(out of distance): $url"));
+
+begin_test();
+$query = array('kind' => 'Shop', 'id' => 1);
+$url = build_url($query);
+$data = query($url);
+test($data->name, '兰州拉面', array('name' => "get Shop: $url"));
