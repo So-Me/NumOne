@@ -32,8 +32,8 @@ exec_sqls($sqls);
 $sqls = explode(';', file_get_contents('default_data.sql'));
 exec_sqls($sqls);
 
-include 'default_data.php';
-insert_categories($default_categories);
+// include 'default_data.php';
+// insert_categories($default_categories);
 
 // function dd($str)
 // {

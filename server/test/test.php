@@ -24,6 +24,16 @@ if (file_exists($user_lib_file))
 // test for add
 
 begin_test();
+$bigCategory = BigCategory::add('餐饮美食');
+BigCategory::add('休闲娱乐');
+test(BigCategory::count(), 2, array('name' => 'add BigCategory'));
+
+begin_test();
+$category = Category::add($bigCategory, '民族清真');
+Category::add($bigCategory, '西餐');
+test(Category::count(), 2, array('name' => 'add Category'));
+
+begin_test();
 $province = Province::add('广东省');
 test(Province::count(), 1, array('name' => 'add province'));
 
@@ -55,12 +65,11 @@ $bc = reset($data->items);
 test($bc->name, '餐饮美食', array('name' => "get BigCategory: $url"));
 
 begin_test();
-$bigCategoryId = '2';
-$query = array('kind' => 'Category', 'bigCategoryId' => $bigCategoryId);
+$query = array('kind' => 'Category', 'bigCategoryId' => $bigCategory->id);
 $url = build_url($query);
 $data = query($url);
 $i = reset($data->items);
-test($i->big_category, $bigCategoryId, array('name' => "get Category: $url"));
+test($i->big_category, $bigCategory->id, array('name' => "get Category: $url"));
 
 begin_test();
 $query = array(

@@ -9,7 +9,10 @@ class TopClass extends BasicModel
     public static function add($name)
     {
         $className = get_called_class();
-        Pdb::insert(compact('name'), $className::table());
+        Pdb::insert(
+            compact('name'), 
+            $className::table(), 
+            'ON DUPLICATE KEY UPDATE name=name');
         return new $className(Pdb::lastInsertId());
     }
 
