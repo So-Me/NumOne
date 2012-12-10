@@ -3,15 +3,36 @@
 /**
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
+$bigCategories = $GLOBALS['bigCategories'];
 ?>
 <h2>分类管理</h2>
-<div class="row-fluid">
-  <div class="span6">
-  	<ul class="tab">
-  		<?php foreach ($GLOBALS['bigCategories'] as $id => $name): ?>
-  			<li><?= $name ?></li>
-  		<?php endforeach ?>
-  	</ul>
+  <h3>大类</h3>
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <?php foreach ($bigCategories as $id => $name): ?>
+        <li><a href="#tab<?= $id ?>"><?= $name ?></a></li>
+      <?php endforeach ?>
+    </ul>
+    <div class="tab-content">
+      <?php foreach ($associateCategories as $id => $categories): ?>
+        <div class="tab-pane" id="big-cate-<?= $id ?>">
+          <ul>
+            <?php foreach ($categories as $id => $name): ?>
+              <li><a href="#"><?= $name ?></a></li>
+            <?php endforeach ?>
+          </ul>
+        </div>
+      <?php endforeach ?>
+    </div>
   </div>
-  <div class="span6"></div>
+    <a class="btn" href="#">添加大类</a>
+  </div>
+  <div class="span4">
+    <h3>一般分类</h3>
+    <ul class="nav nav-tabs nav-stacked">
+    </ul>
+  </div>
+  <div class="span4">
+    <h3>小类</h3>
+  </div>
 </div>
