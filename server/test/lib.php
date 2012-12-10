@@ -177,5 +177,5 @@ function query_name($name, $query)
 {
     $url = build_url($query);
     $json = json_encode($query);
-    return "$name with: $json<a href=\"$url\">View Response</a>";
+    return "$name with: $json<a target=_blank href=\"$url\">View Response</a>";
 }
