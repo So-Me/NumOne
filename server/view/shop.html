@@ -7,23 +7,19 @@
 <h2>商铺管理</h2>
 <table class="table">
 <tbody>
-  <tr>
-    <td>1</td>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>@fat</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Larry</td>
-    <td>the Bird</td>
-    <td>@twitter</td>
-  </tr>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>名称</th>
+    </tr>
+  </thead>
+  <?php $i = 1; ?>
+  <?php foreach ($GLOBALS['shops'] as $shop): ?>
+    <tr>
+      <td><?= $i ?></td>
+      <td><?= $shop->name ?></td>
+    </tr>
+    <?php $i++; ?>
+  <?php endforeach ?>
 </tbody>
 </table>

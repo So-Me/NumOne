@@ -48,7 +48,7 @@ class BasicModel
         $self = get_called_class();
         list($tables, $conds, $orderby, $tail) = $self::buildDbArgs($conds);
         $infos = Pdb::fetchAll('*', $tables, $conds, $orderby, $tail);
-        return safe_array_map(function ($info) use($self) {
+        return array_map(function ($info) use($self) {
             return new $self($info);
         }, $infos);
     }

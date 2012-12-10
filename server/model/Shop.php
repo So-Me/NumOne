@@ -107,7 +107,7 @@ class Shop extends BasicModel
             $conds['shop.district = d.Id'] = null;
             $conds['d.city = ?'] = $cityId;
         }
-        return array($tables, $conds);
+        return array($tables, $conds, $orderby = array(), '');
     }
 
     public static function defaultConds($conds = array())
