@@ -1,20 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 3.5.3
--- http://www.phpmyadmin.net
---
--- 主机: localhost
--- 生成日期: 2012 年 12 月 05 日 18:49
--- 服务器版本: 5.1.49-3
--- PHP 版本: 5.3.3-7+squeeze14
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 --
 -- 数据库: `local`
 --
+
 CREATE DATABASE `local` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `local`;
+
 
 -- --------------------------------------------------------
 
@@ -27,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `big_category` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -41,6 +32,47 @@ CREATE TABLE IF NOT EXISTS `category` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `big_category` (`big_category`,`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `city`
+--
+
+CREATE TABLE IF NOT EXISTS `city` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `province` int(10) unsigned NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `province` (`province`,`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `district`
+--
+
+CREATE TABLE IF NOT EXISTS `district` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `city` int(10) unsigned NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `city` (`city`,`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `province`
+--
+
+CREATE TABLE IF NOT EXISTS `province` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -60,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `shop` (
   `district` char(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
