@@ -6,6 +6,11 @@
 
 class Shop extends BasicModel
 {
+    public function district()
+    {
+        return new District($this->district);
+    }
+    
     public static function add($info)
     {
         $info = self::expendInfo($info);
