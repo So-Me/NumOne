@@ -23,18 +23,35 @@ class Shop extends BasicModel
         return $shop;
     }
 
+    public static function count($conds = array())
+    {
+        extract(self::defaultConds($conds));
+        list($tables, $conds) = self::buildDbArgs($conds);
+        if ($distance && $latilongi) {
+            list($latitude, $longitude) = break_latilongi($latilongi);
+            $distanceExp = "((6371 * acos(cos(radians($latitude)) * cos(radians(shop.latitude)) * cos(radians(shop.longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(shop.latitude)))) * 1000)";
+            $conds["$distanceExp < ?"] = $distance;
+        }
+        return Pdb::count($tables, $conds);
+    }
+
     public static function jsonDatas($conds)
     {
+        extract(self::defaultConds($conds));
         $totalItems = self::count($conds);
         $startIndex = $conds['startIndex'];
         $itemsPerPage = $conds['itemsPerPage'];
         $tail = "LIMIT $itemsPerPage OFFSET $startIndex";
         $fields = '*';
-        if ($conds['distance'] && $conds['latilongi']) {
-            list($laititude, $longitude) = break_laitilongi($latilongi);
-            $fields .= ",( 6371 * acos( cos( radians($laititude) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($longitude) ) + sin( radians($laititude) ) * sin( radians( lat ) ) ) ) AS distance";
+        $orderby = array();
+        if ($conds['distance'] && strlen($conds['latilongi']) > 0) {
+            list($latitude, $longitude) = break_latilongi($latilongi);
+            $distanceExp = "( 6371 * acos( cos( radians($latitude) ) * cos( radians( shop.latitude ) ) * cos( radians( shop.longitude ) - radians($longitude) ) + sin( radians($latitude) ) * sin( radians( shop.latitude ) ) ) )";
+            $fields .= ", $distanceExp AS distance";
+            $conds["distance < ?"] = $distance;
+            $orderby[] = 'distance ASC';
         }
-        list($tables, $conds, $orderby) = self::buildDbArgs($conds);
+        list($tables, $conds) = self::buildDbArgs($conds);
         $items = Pdb::fetchAll($fields, $tables, $conds, $orderby, $tail);
         $itemCount = count($items);
         return compact('startIndex', 'totalItems', 'startIndex', 'itemsPerPage', 'itemCount', 'items');
@@ -64,47 +81,48 @@ class Shop extends BasicModel
 
     public static function buildDbArgs($conds)
     {
+        $conds = self::defaultConds($conds);
         extract($conds);
         $tables = array(self::table()); // as 也可以去掉哦
         $conds = array();
-        if (($categoryid)) {
+        if (isset($categoryId) && $categoryId) {
             $conds['shop.category = ?'] = $categoryid;
         }
-        if (!($categoryid) && ($bigcategoryid)) {
+        if (!($categoryId) && ($bigCategoryId)) {
             $tables[] = Category::table() . ' AS c';
             $conds['shop.category = c.id'] = null;
-            $conds['c.big_category'] = $bigcategoryid;
+            $conds['c.big_category'] = $bigCategoryId;
         }
 
-        if (($districtid)) {
-            $conds['shop.district = ?'] = $districtid;
+        if (isset($districtId) && $districtId) {
+            $conds['shop.district = ?'] = $districtId;
         }
-        if (!($district) && ($city)) {
+        if (!($districtId) && ($cityId)) {
             $tables[] = District::table() . ' AS d';
-            $conds['shop.district = d.id'] = null;
-            $conds['d.city = ?'] = $city;
+            $conds['shop.district = d.Id'] = null;
+            $conds['d.city = ?'] = $cityId;
         }
-        if ($distance && $latilongi) {
-            // $conds['shop.laititude > (? - 1)'] = $laititude;
-            // $conds['shop.laititude < (? + 1)'] = $laititude;
-            // $conds['shop.longitude > (? - 1)'] = $longitude;
-            // $conds['shop.longitude < (? + 1)'] = $longitude;
-            $conds["distance < ?"] = $distance / 1000.0;
-        }
-        $orderby = array();
-        return array($tables, $conds, $orderby);
+        return array($tables, $conds);
+    }
+
+    public static function defaultConds($conds = array())
+    {
+        return array_merge(
+            array(
+                'distance' => '',
+                'latilongi' => '',
+                'districtId' => '',
+                'cityId' => '',
+                'bigCategoryId' => '',
+                'categoryId' => ''),
+            $conds);
     }
 
     // 将经纬度拆开
     private static function expendInfo($info)
     {
         if (isset($info['latilongi'])) {
-            if (preg_match('/^([\+|-]\d+\.\d+)([\+|-]\d+\.\d+)$/', $info['latilongi'], $matches)) {
-                $info['laititude'] = $matches[1];
-                $info['longitude'] = $matches[2];
-            } else {
-                throw new Exception("latilongi not right: $latilongi");
-            }
+            list($info['latitude'], $info['longitude']) = break_latilongi($info['latilongi']);
         }
         return $info;
     }

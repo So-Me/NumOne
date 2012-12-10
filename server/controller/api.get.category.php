@@ -1,12 +1,13 @@
 <?php
 !defined('IN_APP') && exit('ILLEGAL EXECUTION');
 
-$BigCategoryId = _req('BigCategoryId');
+$bigCategoryId = _req('bigCategoryId');
 
 $conds = array();
-if ($BigCategoryId) {
-    $conds['BigCategoryId'] = $BigCategoryId;
+if ($bigCategoryId) {
+    $conds['bigCategoryId'] = $bigCategoryId;
 }
+
 $data = Category::jsonData($conds);
 
 output_data($data);

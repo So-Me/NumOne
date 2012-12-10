@@ -4,11 +4,6 @@
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
 
-class Province extends BasicModel
+class Province extends TopClass
 {
-    public static function add($name)
-    {
-        Pdb::insert(compact('name'), self::table());
-        return new self(Pdb::lastInsertId());
-    }
 }

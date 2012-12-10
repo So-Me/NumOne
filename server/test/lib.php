@@ -137,3 +137,38 @@ function clear_relation_db($main_table, $ref_table, $relation_table = null, $key
             Pdb::del($ref_table, array('id=?' => $id));
     }
 }
+
+function build_url($query)
+{
+    if (isset($_SERVER['HTTP_APPNAME'])) {
+        $root_url = 'http://numone.sinaapp.com/api';
+    } else {
+        $root_url = 'http://one/api';
+    }
+    return "$root_url?" . http_build_query($query);
+}
+
+function query($url)
+{
+    $ch = curl_init();
+    $opts = array(
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_URL => $url);
+    curl_setopt_array($ch, $opts);
+    $json_str = curl_exec($ch);
+    if (curl_errno($ch)) {
+        d(curl_error($ch));
+        throw new Exception("curl error");
+    }
+    curl_close($ch);
+    $json = json_decode($json_str);
+    if (isset($json->data)) {
+        return $json->data;
+    } else if (isset($json->error)) {
+        d($json->error);
+        throw new Exception("josn error");
+    } else {
+        d($json_str);
+        throw new Exception("unkown error");
+    }
+}

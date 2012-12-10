@@ -69,7 +69,7 @@ function insert_categories($cate)
     foreach ($lines as $line) {
         if (preg_match('/^\d.\s(.+)$/', $line, $matches)) {
             Pdb::insert(
-                array('name' => $matches[1]), 
+                array('name' => trim($matches[1])), 
                 'big_category',
                 'ON DUPLICATE KEY UPDATE name=name');
             $cur_big = Pdb::lastInsertId();
@@ -77,7 +77,7 @@ function insert_categories($cate)
             Pdb::insert(
                 array(
                     'big_category' => $cur_big, 
-                    'name' => $matches[1]), 
+                    'name' => trim($matches[1])), 
                 'category',
                 'ON DUPLICATE KEY UPDATE name=name');
         } else {

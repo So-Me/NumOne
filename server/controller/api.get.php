@@ -2,5 +2,15 @@
 !defined('IN_APP') && exit('ILLEGAL EXECUTION');
 
 if (!file_exists(AppFile::controller("api.get.$kind"))) {
-    exit("not right kind: $kind"); // TODO
+    $availables = array(
+        'BigCategory',
+        'Category',
+        'Province',
+        'City',
+        'District',
+        'ShopList',
+        'Shop');
+    output_error(
+        400, 
+        array('message' => "Not right kind: $kind.", 'availables' => $availables));
 }
