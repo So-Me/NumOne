@@ -14,6 +14,16 @@ class TopClass extends BasicModel
         return new $className(Pdb::lastInsertId());
     }
 
+    public static function readArray()
+    {
+        $arr = Pdb::fetchAll('*', self::table());
+        $ret = array();
+        foreach ($arr as $info) {
+            $ret[$info['id']] = $info['name'];
+        }
+        return $ret;
+    }
+
     public static function jsonData($conds = array())
     {
         $kind = get_called_class();

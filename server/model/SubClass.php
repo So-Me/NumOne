@@ -15,9 +15,14 @@ class SubClass extends BasicModel
         return new $class(Pdb::lastInsertId());
     }
 
-    public static function readArray()
+    public static function readArray($parent = null)
     {
-        $arr = Pdb::fetchAll('*', self::table());
+        $conds = array();
+        if ($parent !== null) {
+            $parentClass = get_class($parent);
+            $conds[camel2under($parentClass) . ' = ?'] = $parent->id;
+        }
+        $arr = Pdb::fetchAll('*', self::table(), $conds);
         $ret = array();
         foreach ($arr as $info) {
             $ret[$info['id']] = $info['name'];

@@ -6,6 +6,12 @@
 ?>
 <h2>分类管理</h2>
 <div class="row-fluid">
-  <div class="span6">hello</div>
-  <div class="span6">hw</div>
+  <div class="span6">
+  	<ul class="tab">
+  		<?php foreach ($GLOBALS['bigCategories'] as $id => $name): ?>
+  			<li><?= $name ?></li>
+  		<?php endforeach ?>
+  	</ul>
+  </div>
+  <div class="span6"></div>
 </div>
