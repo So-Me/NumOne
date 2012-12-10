@@ -5,7 +5,21 @@
  */
 ?>
 <h2>商铺管理</h2>
-<table class="table">
+<form class="form-search">
+  <label>名称：</label>
+  <input type="text" name="name">
+  <label>市/县：</label>
+  <?php widget('select', array(
+                        'fieldName' => 'city', 
+                        'data' => $GLOBALS['cities'])); ?>
+  <label>district：</label>
+  <?php widget('select'); ?>
+  <input type="text" name="district">
+  <label>sort：</label>
+  <input type="text" name="sort">
+  <input type="submit" value="搜索">
+</form>
+<table class="table table-striped table-hover">
 <tbody>
   <thead>
     <tr>

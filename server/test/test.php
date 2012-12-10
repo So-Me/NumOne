@@ -36,15 +36,15 @@ test(Category::count(), 2, array('name' => 'add Category'));
 
 begin_test();
 $province = Province::add('广东省');
-test(Province::count(), 1, array('name' => 'add province'));
+test(Province::count(), 1, array('name' => 'add Province'));
 
 begin_test();
 $city = City::add($province, '深圳');
-test(City::count(), 1, array('name' => 'add city'));
+test(City::count(), 1, array('name' => 'add City'));
 
 begin_test();
 $district = District::add($city, '福田区');
-test(District::count(), 1, array('name' => 'add district'));
+test(District::count(), 1, array('name' => 'add District'));
 
 begin_test();
 $info = array(
@@ -54,7 +54,10 @@ $info = array(
     'latilongi' => '22.546692,114.065162', // 真的有这家兰州拉面 广东省深圳市福田区福中一路
     'images' => array('/test/static/img/5123370_143953049318_2.jpg'));
 $shop = Shop::add($info);
-test(Shop::count(), 1, array('name' => 'add shop'));
+$info['name'] = '星巴克咖啡';
+$info['latilongi'] = '22.545451,114.086379';
+Shop::add($info);
+test(Shop::count(), 2, array('name' => 'add Shop'));
 
 // test for read
 

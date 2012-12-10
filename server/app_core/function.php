@@ -323,5 +323,5 @@ function build_nav($str)
 
 function widget($name, $opts = array()) {
     extract($opts);
-    include smart_view("widget.$name");
+    include AppFile::view("widget.$name");
 }

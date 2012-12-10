@@ -1,9 +1,7 @@
 <?php
-
 /**
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
-
 class TopClass extends BasicModel
 {
     public static function add($name)

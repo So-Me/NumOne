@@ -3,16 +3,16 @@
 /**
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
-if (!isset($field_name))
-    $field_name = 'type';
-$cur_value = i($GLOBALS[$field_name]);
+if (!isset($fieldName))
+    $fieldName = 'type';
+$cur_value = i($GLOBALS[$fieldName]);
 if (!isset($default_value))
     $default_value = '';
 if (!isset($data)) {
-    $data = $GLOBALS[$field_name . 's'];
+    $data = $GLOBALS[$fieldName . 's'];
 }
 ?>
-<select name="<?= $field_name ?>" class="<?= i($class) ?>">
+<select name="<?= $fieldName ?>" class="<?= i($class) ?>">
     <?php if (!isset($no_default) || !$no_default): ?>
         <option value="<?= $default_value ?>" <?= $cur_value == 'all' ? 'selected' : '' ?> >全部</option>
     <?php endif ?>

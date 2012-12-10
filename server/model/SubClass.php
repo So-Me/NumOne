@@ -1,9 +1,7 @@
 <?php
-
 /**
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
-
 class SubClass extends BasicModel
 {
     public static function add($parent, $name)
@@ -15,6 +13,16 @@ class SubClass extends BasicModel
             array($refKey => $parent->id, 'name' => $name), 
             $class::table());
         return new $class(Pdb::lastInsertId());
+    }
+
+    public static function readArray()
+    {
+        $arr = Pdb::fetchAll('*', self::table());
+        $ret = array();
+        foreach ($arr as $info) {
+            $ret[$info['id']] = $info['name'];
+        }
+        return $ret;
     }
 
     public static function jsonData($conds = array())
