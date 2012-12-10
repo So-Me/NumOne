@@ -63,14 +63,16 @@ $query = array('kind' => 'BigCategory');
 $url = build_url($query);
 $data = query($url);
 $bc = reset($data->items);
-test($bc->name, '餐饮美食', array('name' => "get BigCategory: $url"));
+$name = query_name('get BigCategory', $query);
+test($bc->name, '餐饮美食', compact('name'));
 
 begin_test();
 $query = array('kind' => 'Category', 'bigCategoryId' => $bigCategory->id);
 $url = build_url($query);
 $data = query($url);
 $i = reset($data->items);
-test($i->big_category, $bigCategory->id, array('name' => "get Category: $url"));
+$name = query_name('get Category', $query);
+test($i->big_category, $bigCategory->id, compact('name'));
 
 begin_test();
 $query = array(
@@ -81,17 +83,20 @@ $query = array(
 $url = build_url($query);
 $data = query($url);
 $i = reset($data->items);
-test($i->name, '兰州拉面', array('name' => "get ShopList(within distance): $url"));
+$name = query_name('get ShopList(within distance)', $query);
+test($i->name, '兰州拉面', compact('name'));
 
 begin_test();
 $query['latilongi'] = '22.566305,114.09138'; // 1000米以外
 $url = build_url($query);
 $data = query($url);
 $ic = $data->itemCount;
-test($ic, 0, array('name' => "get ShopList(out of distance): $url"));
+$name = query_name('get ShopList(out of distance)', $query);
+test($ic, 0, compact('name'));
 
 begin_test();
 $query = array('kind' => 'Shop', 'id' => 1);
 $url = build_url($query);
 $data = query($url);
-test($data->name, '兰州拉面', array('name' => "get Shop: $url"));
+$name = query_name('get Shop', $query);
+test($data->name, '兰州拉面', compact('name'));

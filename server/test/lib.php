@@ -172,3 +172,10 @@ function query($url)
         throw new Exception("unkown error");
     }
 }
+
+function query_name($name, $query)
+{
+    $url = build_url($query);
+    $json = json_encode($query);
+    return "$name with: $json<a href=\"$url\">View Response</a>";
+}
