@@ -35,18 +35,8 @@ https://github.com/So-Me/NumOne/wiki/JSON-example
 interfaces
 ----------
 
-url: /api
-
-parameters:
-
-- action
-- target
-
-...
-
-**example:**
-
-/api?action=get&target=shoplist&district=futian&count=10
+interfaces have been moved to 
+https://github.com/So-Me/NumOne/wiki/Interface
 
 request JSON in android
 
