@@ -8,6 +8,7 @@ class Shop extends BasicModel
 {
     public static function add($info)
     {
+        $info = self::expendInfo($info);
         if (isset($info['images'])) {
             $images = $info['images'];
             unset($info['images']);
@@ -80,5 +81,19 @@ class Shop extends BasicModel
         }
         $orderby = array();
         return array($tables, $conds, $orderby);
+    }
+
+    // 将经纬度拆开
+    private static function expendInfo($info)
+    {
+        if (isset($info['latilongi'])) {
+            if (preg_match('/^([\+|-]\d+\.\d+)([\+|-]\d+\.\d+)$/', $info['latilongi'], $matches)) {
+                $info['laititude'] = $matches[1];
+                $info['longitude'] = $matches[2];
+            } else {
+                throw new Exception("latilongi not right: $latilongi");
+            }
+        }
+        return $info;
     }
 }

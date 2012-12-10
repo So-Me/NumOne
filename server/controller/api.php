@@ -6,4 +6,5 @@ if (!$by_ajax && !DEBUG) {
 }
 
 $kind = _req('kind');
-$target = $kind;
+if ($kind)
+    $target = $kind;
