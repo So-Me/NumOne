@@ -29,8 +29,13 @@ class Shop extends BasicModel
         $startIndex = $conds['startIndex'];
         $itemsPerPage = $conds['itemsPerPage'];
         $tail = "LIMIT $itemsPerPage OFFSET $startIndex";
+        $fields = '*';
+        if ($conds['distance'] && $conds['latilongi']) {
+            list($laititude, $longitude) = break_laitilongi($latilongi);
+            $fields .= ",( 6371 * acos( cos( radians($laititude) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($longitude) ) + sin( radians($laititude) ) * sin( radians( lat ) ) ) ) AS distance";
+        }
         list($tables, $conds, $orderby) = self::buildDbArgs($conds);
-        $items = Pdb::fetchAll('*', $tables, $conds, $orderby, $tail);
+        $items = Pdb::fetchAll($fields, $tables, $conds, $orderby, $tail);
         $itemCount = count($items);
         return compact('startIndex', 'totalItems', 'startIndex', 'itemsPerPage', 'itemCount', 'items');
     }
@@ -62,22 +67,29 @@ class Shop extends BasicModel
         extract($conds);
         $tables = array(self::table()); // as 也可以去掉哦
         $conds = array();
-        if (isset($categoryid)) {
+        if (($categoryid)) {
             $conds['shop.category = ?'] = $categoryid;
         }
-        if (!isset($categoryid) && isset($bigcategoryid)) {
+        if (!($categoryid) && ($bigcategoryid)) {
             $tables[] = Category::table() . ' AS c';
             $conds['shop.category = c.id'] = null;
             $conds['c.big_category'] = $bigcategoryid;
         }
 
-        if (isset($districtid)) {
+        if (($districtid)) {
             $conds['shop.district = ?'] = $districtid;
         }
-        if (!isset($district) && isset($city)) {
+        if (!($district) && ($city)) {
             $tables[] = District::table() . ' AS d';
             $conds['shop.district = d.id'] = null;
             $conds['d.city = ?'] = $city;
+        }
+        if ($distance && $latilongi) {
+            // $conds['shop.laititude > (? - 1)'] = $laititude;
+            // $conds['shop.laititude < (? + 1)'] = $laititude;
+            // $conds['shop.longitude > (? - 1)'] = $longitude;
+            // $conds['shop.longitude < (? + 1)'] = $longitude;
+            $conds["distance < ?"] = $distance / 1000.0;
         }
         $orderby = array();
         return array($tables, $conds, $orderby);

@@ -17,7 +17,15 @@ if ($all_given ^ $given_any) {
     output_error(400, "latilongi, districtid and distance must be given togther or not with any");
 }
 
-$conds = compact('startIndex', 'itemsPerPage');
+$conds = compact(
+    'distance',
+    'latilongi',
+    'districtId',
+    'cityId',
+    'bigCategoryId',
+    'categoryId',
+    'startIndex', 
+    'itemsPerPage');
 $data = Shop::jsonDatas($conds);
 
 output_data($data);

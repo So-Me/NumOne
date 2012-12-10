@@ -54,6 +54,8 @@ CREATE TABLE IF NOT EXISTS `shop` (
   `category` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `latilongi` char(20) NOT NULL,
+  `latitude` decimal(7,4) NOT NULL,
+  `longitude` decimal(7,4) NOT NULL,
   `city` char(50) NOT NULL,
   `district` char(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
