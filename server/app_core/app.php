@@ -51,8 +51,8 @@ function init_env()
     });
 }
 
-function render_view($view, $opts = array())
+function render_view($view_file, $opts = array())
 {
     extract($opts);
-    include AppFile::view($view); // 渲染 view
+    include AppFile::view($view_file); // 渲染 view
 }

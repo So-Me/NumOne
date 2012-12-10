@@ -15,7 +15,7 @@ class AppFile
 
     public static function view($name)
     {
-        return APP_ROOT . DS . 'view' . DS . "$name.html";
+        return APP_ROOT . 'view' . DS . "$name.html";
     }
 
     public static function lib($name)
