@@ -1,0 +1,12 @@
+<?php
+!defined('IN_APP') && exit('ILLEGAL EXECUTION');
+/**
+ * @author  ryan <cumt.xiaochi@gmail.com>
+ */
+?>
+<div class="span3">
+  <?php include AppFile::view('sidebar'); ?>
+</div><!--/span-->
+<div class="span9">
+  <?php include AppFile::view($GLOBALS['controller']); ?>
+</div><!--/span-->
